@@ -427,7 +427,9 @@
       "cancelSubscription": "ביטול מנוי",
       "paymentMethod": "אמצעי תשלום",
       "billingHistory": "היסטוריית חיובים",
-      "noPaymentMethod": "לא הוגדר אמצעי תשלום"
+      "noPaymentMethod": "לא הוגדר אמצעי תשלום",
+      "subscriptionActivating": "התשלום התקבל, המנוי מופעל…",
+      "subscriptionError": "משהו השתבש בתשלום. נסו שוב"
     },
     "saved": "השינויים נשמרו"
   },

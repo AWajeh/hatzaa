@@ -418,7 +418,9 @@
       "cancelSubscription": "إلغاء الاشتراك",
       "paymentMethod": "طريقة الدفع",
       "billingHistory": "سجل الفواتير",
-      "noPaymentMethod": "لم يتم تحديد طريقة دفع"
+      "noPaymentMethod": "لم يتم تحديد طريقة دفع",
+      "subscriptionActivating": "تم استلام الدفعة، جارٍ تفعيل الاشتراك…",
+      "subscriptionError": "حدث خطأ أثناء الدفع. حاول مرة أخرى"
     },
     "saved": "تم حفظ التغييرات"
   },

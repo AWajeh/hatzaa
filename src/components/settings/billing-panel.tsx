@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PayPalButtons } from "./paypal-buttons";
 
 interface Subscription {
   status: string;
@@ -22,33 +23,15 @@ export function BillingPanel({
 }) {
   const t = useTranslations("settings.billing");
   const tPricing = useTranslations("landing.pricing");
-  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+  const router = useRouter();
 
   const plan = subscription?.plan;
   const limit = plan?.quoteMonthlyLimit ?? null;
 
-  async function upgrade(tier: "PRO" | "BUSINESS") {
-    setLoadingPlan(tier);
-    try {
-      const res = await fetch("/api/billing/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planTier: tier, interval: "MONTHLY" }),
-      });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        if (body.error === "PAYMENTS_NOT_CONFIGURED") {
-          toast.error("Payments are not configured yet in this environment.");
-        } else {
-          toast.error("Could not start checkout.");
-        }
-        return;
-      }
-      const body = await res.json();
-      window.location.href = body.redirectUrl;
-    } finally {
-      setLoadingPlan(null);
-    }
+  function handleActivated() {
+    // The webhook is the source of truth and typically lands within a few
+    // seconds; refresh so the new plan shows up once it has.
+    setTimeout(() => router.refresh(), 3000);
   }
 
   async function cancel() {
@@ -82,9 +65,7 @@ export function BillingPanel({
                 <CardTitle>{tPricing(`plans.${tier.toLowerCase()}.name`)}</CardTitle>
               </CardHeader>
               <CardContent>
-                <Button className="w-full" loading={loadingPlan === tier} onClick={() => upgrade(tier)}>
-                  {tPricing("choosePlan")}
-                </Button>
+                <PayPalButtons planTier={tier} interval="MONTHLY" onActivated={handleActivated} />
               </CardContent>
             </Card>
           ))}

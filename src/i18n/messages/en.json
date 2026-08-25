@@ -418,7 +418,9 @@
       "cancelSubscription": "Cancel subscription",
       "paymentMethod": "Payment method",
       "billingHistory": "Billing history",
-      "noPaymentMethod": "No payment method on file"
+      "noPaymentMethod": "No payment method on file",
+      "subscriptionActivating": "Payment received, activating your subscription…",
+      "subscriptionError": "Something went wrong with the payment. Please try again"
     },
     "saved": "Changes saved"
   },
