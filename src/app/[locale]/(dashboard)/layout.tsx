@@ -16,6 +16,12 @@ export default async function DashboardLayout({ children }: { children: React.Re
   if (!session?.user?.id) redirect("/login");
   if (!session.user.businessId) redirect("/login");
 
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { emailVerifiedAt: true, phoneVerifiedAt: true },
+  });
+  if (!user?.emailVerifiedAt || !user?.phoneVerifiedAt) redirect("/verify");
+
   const business = await prisma.business.findUnique({
     where: { id: session.user.businessId },
     select: { name: true, logoUrl: true },

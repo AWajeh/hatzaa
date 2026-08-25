@@ -89,22 +89,48 @@ enum CustomerStatus {
 // ---------------------------------------------------------------------------
 
 model User {
-  id           String    @id @default(cuid())
-  email        String    @unique
-  passwordHash String?
-  name         String
-  phone        String?
-  locale       Locale    @default(he)
-  image        String?
+  id              String    @id @default(cuid())
+  email           String    @unique
+  passwordHash    String?
+  name            String
+  phone           String?   @unique
+  locale          Locale    @default(he)
+  image           String?
   emailVerifiedAt DateTime?
+  phoneVerifiedAt DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   memberships BusinessMember[]
   accounts    OAuthAccount[]
+  otpCodes    OtpCode[]
 
   @@map("users")
+}
+
+enum OtpPurpose {
+  EMAIL_VERIFY
+  PASSWORD_RESET
+}
+
+// One-time codes for email verification and password reset. Phone
+// verification does not use this table — it's handled entirely by
+// Twilio Verify, which manages code generation/expiry/attempts itself.
+model OtpCode {
+  id         String     @id @default(cuid())
+  userId     String
+  purpose    OtpPurpose
+  codeHash   String
+  expiresAt  DateTime
+  consumedAt DateTime?
+  attempts   Int        @default(0)
+  createdAt  DateTime   @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, purpose])
+  @@map("otp_codes")
 }
 
 // OAuth (Google) linked accounts.

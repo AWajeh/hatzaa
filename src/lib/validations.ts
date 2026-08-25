@@ -4,11 +4,25 @@ export const registerSchema = z.object({
   name: z.string().min(2).max(100),
   businessName: z.string().min(2).max(100),
   email: z.string().email(),
-  phone: z.string().min(9).max(20).optional().or(z.literal("")),
+  phone: z.string().min(9).max(20),
   password: z.string().min(8).max(100),
   locale: z.enum(["he", "ar", "en"]).default("he"),
 });
 export type RegisterInput = z.infer<typeof registerSchema>;
+
+export const otpCodeSchema = z.object({
+  code: z.string().length(6).regex(/^\d+$/),
+});
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().email(),
+});
+
+export const resetPasswordSchema = z.object({
+  email: z.string().email(),
+  code: z.string().length(6).regex(/^\d+$/),
+  password: z.string().min(8).max(100),
+});
 
 export const loginSchema = z.object({
   email: z.string().email(),

@@ -5,6 +5,10 @@ import { prisma } from "@/lib/db";
 import { registerSchema } from "@/lib/validations";
 import { PlanTier, UserRole } from "@prisma/client";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
+import { smsProvider, toE164Israel } from "@/lib/sms/provider";
+import { emailProvider } from "@/lib/email/provider";
+import { issueOtpCode } from "@/lib/otp";
+import { verificationEmailHtml } from "@/lib/email/templates";
 
 export async function POST(req: Request) {
   const ip = getClientIp(req);
@@ -21,10 +25,15 @@ export async function POST(req: Request) {
 
   const { name, businessName, email, phone, password, locale } = parsed.data;
   const normalizedEmail = email.toLowerCase().trim();
+  const e164Phone = toE164Israel(phone);
 
-  const existing = await prisma.user.findUnique({ where: { email: normalizedEmail } });
-  if (existing) {
+  const existingEmail = await prisma.user.findUnique({ where: { email: normalizedEmail } });
+  if (existingEmail) {
     return NextResponse.json({ error: "EMAIL_TAKEN" }, { status: 409 });
+  }
+  const existingPhone = await prisma.user.findUnique({ where: { phone: e164Phone } });
+  if (existingPhone) {
+    return NextResponse.json({ error: "PHONE_TAKEN" }, { status: 409 });
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
@@ -44,7 +53,7 @@ export async function POST(req: Request) {
       data: {
         name,
         email: normalizedEmail,
-        phone: phone || undefined,
+        phone: e164Phone,
         passwordHash,
         locale,
       },
@@ -56,7 +65,7 @@ export async function POST(req: Request) {
         name: businessName,
         ownerName: name,
         email: normalizedEmail,
-        phone: phone || undefined,
+        phone: e164Phone,
         locale,
         members: { create: { userId: user.id, role: UserRole.OWNER } },
       },
@@ -75,6 +84,19 @@ export async function POST(req: Request) {
 
     return { user, business };
   });
+
+  // Kick off both verification channels. Failures here shouldn't block
+  // registration — the user can resend from the /verify page.
+  await Promise.allSettled([
+    smsProvider.sendCode(e164Phone),
+    issueOtpCode(result.user.id, "EMAIL_VERIFY").then((code) =>
+      emailProvider.send({
+        to: normalizedEmail,
+        subject: locale === "en" ? "Verify your email — Hatzaa" : locale === "ar" ? "تأكيد بريدك الإلكتروني — הצעה" : "אימות כתובת האימייל — הצעה",
+        html: verificationEmailHtml(code, locale),
+      })
+    ),
+  ]);
 
   return NextResponse.json({ id: result.user.id, businessSlug: result.business.slug }, { status: 201 });
 }

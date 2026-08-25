@@ -158,7 +158,8 @@
       "subtitle": "Welcome back",
       "submit": "Log in",
       "noAccount": "Don't have an account yet?",
-      "createOne": "Create a new account"
+      "createOne": "Create a new account",
+      "forgotPassword": "Forgot password?"
     },
     "register": {
       "title": "Create a new account",
@@ -180,8 +181,45 @@
     "errors": {
       "invalidCredentials": "Invalid email or password",
       "emailTaken": "This email is already registered",
+      "phoneTaken": "This phone number is already registered to another account",
       "weakPassword": "Password must be at least 8 characters"
+    },
+    "forgotPassword": {
+      "title": "Forgot password?",
+      "subtitle": "We'll send a password reset code to your email",
+      "email": "Email",
+      "submit": "Send code",
+      "codeSent": "If that address is registered, we've sent it a code",
+      "checkEmailTitle": "Check your email",
+      "checkEmailDescription": "We sent a reset code to {email}",
+      "enterCode": "Enter code",
+      "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+      "title": "Reset password",
+      "subtitle": "Enter the code you received by email and a new password",
+      "email": "Email",
+      "code": "Code",
+      "newPassword": "New password",
+      "submit": "Update password",
+      "codeExpired": "That code has expired, request a new one",
+      "invalidCode": "Invalid code",
+      "success": "Password updated — you can log in now",
+      "backToLogin": "Back to login"
     }
+  },
+  "verify": {
+    "title": "Verify your account",
+    "subtitle": "To finish signing up, verify your email and phone number",
+    "emailLabel": "Code sent to {email}",
+    "phoneLabel": "Code sent to {phone}",
+    "confirm": "Confirm",
+    "resend": "Resend code",
+    "invalidCode": "Invalid code, try again",
+    "emailVerified": "Email verified",
+    "phoneVerified": "Phone verified",
+    "codeSent": "A new code was sent",
+    "logout": "Log out"
   },
   "dashboard": {
     "title": "Dashboard",

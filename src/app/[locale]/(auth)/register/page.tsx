@@ -40,6 +40,7 @@ export default function RegisterPage() {
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         if (body.error === "EMAIL_TAKEN") toast.error(t("errors.emailTaken"));
+        else if (body.error === "PHONE_TAKEN") toast.error(t("errors.phoneTaken"));
         else toast.error(t("errors.invalidCredentials"));
         return;
       }
@@ -53,7 +54,7 @@ export default function RegisterPage() {
         router.push("/login");
         return;
       }
-      router.push("/dashboard");
+      router.push("/verify");
       router.refresh();
     } finally {
       setSubmitting(false);
@@ -82,7 +83,7 @@ export default function RegisterPage() {
           </div>
           <div>
             <Label htmlFor="phone">{t("fields.phone")}</Label>
-            <Input id="phone" className="mt-1.5" {...register("phone")} />
+            <Input id="phone" type="tel" inputMode="tel" placeholder="050-1234567" className="mt-1.5" {...register("phone")} invalid={!!errors.phone} />
           </div>
           <div>
             <Label htmlFor="password">{t("fields.password")}</Label>

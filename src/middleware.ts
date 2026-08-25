@@ -11,6 +11,7 @@ const PROTECTED_SEGMENTS = [
   "services",
   "quotes",
   "settings",
+  "verify",
 ];
 
 function isProtectedPath(pathname: string) {

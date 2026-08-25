@@ -62,7 +62,12 @@ export default function LoginPage() {
             <Input id="email" type="email" className="mt-1.5" {...register("email")} invalid={!!errors.email} />
           </div>
           <div>
-            <Label htmlFor="password">{t("fields.password")}</Label>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="password">{t("fields.password")}</Label>
+              <Link href="/forgot-password" className="text-xs font-medium text-primary hover:underline">
+                {t("login.forgotPassword")}
+              </Link>
+            </div>
             <Input id="password" type="password" className="mt-1.5" {...register("password")} invalid={!!errors.password} />
           </div>
           <Button type="submit" className="w-full" loading={submitting}>

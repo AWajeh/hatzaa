@@ -167,7 +167,8 @@
       "subtitle": "שמחים לראות אתכם שוב",
       "submit": "התחברות",
       "noAccount": "עדיין אין לכם חשבון?",
-      "createOne": "צרו חשבון חדש"
+      "createOne": "צרו חשבון חדש",
+      "forgotPassword": "שכחתם סיסמה?"
     },
     "register": {
       "title": "יצירת חשבון חדש",
@@ -189,8 +190,45 @@
     "errors": {
       "invalidCredentials": "אימייל או סיסמה שגויים",
       "emailTaken": "כתובת האימייל כבר רשומה במערכת",
+      "phoneTaken": "מספר הטלפון כבר רשום במערכת עם חשבון אחר",
       "weakPassword": "הסיסמה חייבת להכיל לפחות 8 תווים"
+    },
+    "forgotPassword": {
+      "title": "שכחתם סיסמה?",
+      "subtitle": "נשלח לכם קוד לאיפוס הסיסמה לכתובת האימייל",
+      "email": "אימייל",
+      "submit": "שליחת קוד",
+      "codeSent": "אם הכתובת רשומה במערכת, נשלח אליה קוד",
+      "checkEmailTitle": "בדקו את תיבת הדואר",
+      "checkEmailDescription": "שלחנו קוד איפוס ל-{email}",
+      "enterCode": "הזנת הקוד",
+      "backToLogin": "חזרה להתחברות"
+    },
+    "resetPassword": {
+      "title": "איפוס סיסמה",
+      "subtitle": "הזינו את הקוד שקיבלתם באימייל וסיסמה חדשה",
+      "email": "אימייל",
+      "code": "קוד",
+      "newPassword": "סיסמה חדשה",
+      "submit": "עדכון סיסמה",
+      "codeExpired": "פג תוקף הקוד, בקשו קוד חדש",
+      "invalidCode": "קוד שגוי",
+      "success": "הסיסמה עודכנה בהצלחה, אפשר להתחבר",
+      "backToLogin": "חזרה להתחברות"
     }
+  },
+  "verify": {
+    "title": "אימות החשבון",
+    "subtitle": "כדי להשלים את ההרשמה, אמתו את כתובת האימייל ומספר הטלפון שלכם",
+    "emailLabel": "קוד שנשלח לכתובת {email}",
+    "phoneLabel": "קוד שנשלח למספר {phone}",
+    "confirm": "אישור",
+    "resend": "שליחת קוד מחדש",
+    "invalidCode": "קוד שגוי, נסו שוב",
+    "emailVerified": "כתובת האימייל אומתה",
+    "phoneVerified": "מספר הטלפון אומת",
+    "codeSent": "קוד חדש נשלח",
+    "logout": "התנתקות"
   },
   "dashboard": {
     "title": "לוח בקרה",
