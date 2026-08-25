@@ -38,6 +38,6 @@ export default async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
+    "/((?!api|trpc|_next|_vercel|icon|apple-icon|.*\\..*).*)",
   ],
 };
