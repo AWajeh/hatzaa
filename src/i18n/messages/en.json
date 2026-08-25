@@ -97,7 +97,7 @@
         "free": {
           "name": "Free",
           "description": "To get started and try the system",
-          "features": ["2 free quotes, one time", "Personal price list", "Basic PDF", "Public quote link"]
+          "features": ["2 quotes, one time", "Personal price list", "Basic PDF", "Public quote link"]
         },
         "pro": {
           "name": "Pro",
@@ -115,7 +115,7 @@
       "title": "Frequently asked questions",
       "items": [
         { "question": "Is this suitable for my trade?", "answer": "Yes. The system is built to fit any tradesperson who issues quotes — renovation contractors, electricians, plumbers, painters, carpenters and more." },
-        { "question": "Can I try it for free?", "answer": "Yes, you can start on the free plan with no credit card and create up to 5 quotes per month." },
+        { "question": "Can I try it for free?", "answer": "Yes, you can start on the free plan with no credit card and create 2 quotes, one time." },
         { "question": "How does the customer receive the quote?", "answer": "You send a unique link via WhatsApp, email, or any other channel. The customer opens the quote in their browser, can download a PDF, and accept or reject it." },
         { "question": "Can I change the VAT rate?", "answer": "Yes, the VAT rate can be updated in Settings at any time, so quotes always stay accurate." },
         { "question": "Is my data secure?", "answer": "Yes. Your data is encrypted and fully isolated from other businesses on the platform. We never store credit card details." }
