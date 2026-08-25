@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatMoney, formatDate, cn } from "@/lib/utils";
+import { whatsAppProvider } from "@/lib/whatsapp";
 import { toast } from "sonner";
 
 interface PublicQuote {
@@ -278,6 +279,20 @@ export default function PublicQuotePage() {
                 {t("reject")}
               </Button>
             </div>
+          )}
+
+          {quote.business.phone && (
+            <a
+              href={whatsAppProvider.buildSendUrl(
+                quote.business.phone,
+                t("contactMessage", { number: quote.number })
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 flex items-center justify-center gap-1.5 text-sm font-medium text-primary hover:underline"
+            >
+              {t("contactUs")}
+            </a>
           )}
         </div>
 

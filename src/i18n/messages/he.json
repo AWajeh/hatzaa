@@ -383,7 +383,8 @@
     "rejected": "ההצעה נדחתה. תודה על העדכון.",
     "alreadyResponded": "כבר הגבתם להצעה זו",
     "expired": "פג תוקפה של הצעה זו",
-    "contactUs": "יצירת קשר",
+    "contactUs": "יצירת קשר ב-WhatsApp",
+    "contactMessage": "שלום, יש לי שאלה לגבי הצעת מחיר {number}",
     "poweredBy": "הצעת המחיר הופקה באמצעות"
   },
   "whatsapp": {

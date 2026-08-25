@@ -374,7 +374,8 @@
     "rejected": "The quote has been rejected. Thanks for letting us know.",
     "alreadyResponded": "You've already responded to this quote",
     "expired": "This quote has expired",
-    "contactUs": "Contact us",
+    "contactUs": "Contact us on WhatsApp",
+    "contactMessage": "Hi, I have a question about quote {number}",
     "poweredBy": "This quote was generated with"
   },
   "whatsapp": {
