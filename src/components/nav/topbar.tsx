@@ -2,9 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { signOut } from "next-auth/react";
-import { LogOut, User as UserIcon } from "lucide-react";
+import { LogOut, User as UserIcon, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/nav/language-switcher";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,9 +19,10 @@ import {
 interface TopbarProps {
   userName: string;
   userEmail: string;
+  planTier: string;
 }
 
-export function Topbar({ userName, userEmail }: TopbarProps) {
+export function Topbar({ userName, userEmail, planTier }: TopbarProps) {
   const t = useTranslations("nav");
 
   return (
@@ -29,6 +32,15 @@ export function Topbar({ userName, userEmail }: TopbarProps) {
       </div>
       <div className="hidden lg:block" />
       <div className="flex items-center gap-2">
+        {planTier === "FREE" && (
+          <Link
+            href="/settings?tab=billing"
+            className={cn(buttonVariants({ size: "sm" }), "gap-1.5")}
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            {t("upgrade")}
+          </Link>
+        )}
         <LanguageSwitcher />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

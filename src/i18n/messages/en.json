@@ -37,7 +37,8 @@
     "settings": "Settings",
     "logout": "Log out",
     "myAccount": "My account",
-    "newQuote": "New quote"
+    "newQuote": "New quote",
+    "upgrade": "Upgrade"
   },
   "landing": {
     "nav": {

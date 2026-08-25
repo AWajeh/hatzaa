@@ -22,11 +22,17 @@ export default async function DashboardLayout({ children }: { children: React.Re
   });
   if (!business) redirect("/login");
 
+  const subscription = await prisma.subscription.findUnique({
+    where: { businessId: session.user.businessId },
+    include: { plan: true },
+  });
+  const planTier = subscription?.plan.tier ?? "FREE";
+
   return (
     <div className="flex min-h-dvh">
       <Sidebar businessName={business.name} logoUrl={business.logoUrl} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar userName={session.user.name ?? ""} userEmail={session.user.email ?? ""} />
+        <Topbar userName={session.user.name ?? ""} userEmail={session.user.email ?? ""} planTier={planTier} />
         <main className="flex-1 overflow-x-hidden bg-muted/30 p-4 pb-24 lg:p-8 lg:pb-8">
           {children}
         </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -21,6 +22,9 @@ interface SettingsData {
 
 export default function SettingsPage() {
   const t = useTranslations("settings");
+  const tCommon = useTranslations("common");
+  const searchParams = useSearchParams();
+  const initialTab = searchParams.get("tab") === "billing" ? "billing" : "business";
   const [data, setData] = useState<SettingsData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +35,7 @@ export default function SettingsPage() {
       if (!res.ok) throw new Error();
       setData(await res.json());
     } catch {
-      toast.error(t("saved"));
+      toast.error(tCommon("somethingWentWrong"));
     } finally {
       setLoading(false);
     }
@@ -51,7 +55,7 @@ export default function SettingsPage() {
       {loading || !data ? (
         <Skeleton className="h-96 w-full" />
       ) : (
-        <Tabs defaultValue="business">
+        <Tabs defaultValue={initialTab}>
           <TabsList>
             <TabsTrigger value="business">{t("tabs.business")}</TabsTrigger>
             <TabsTrigger value="preferences">{t("tabs.preferences")}</TabsTrigger>
