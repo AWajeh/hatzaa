@@ -13,7 +13,27 @@ Hebrew/Israeli business support, webhook reliability, and integration effort.
 | Pricing transparency | Clear per-transaction + monthly terminal fee | Clear, similar structure | Requires sales contact | Requires sales contact |
 | Integration effort for MVP | Low — one hosted-page create call + one webhook | Low-medium | Medium | Medium |
 
-## Decision: Cardcom
+## Update: PayPal is the active default for launch
+
+The comparison and decision below were written assuming the business owner
+already had an Israeli עוסק מורשה/פטור (business registration) number,
+which Cardcom (and every other local Israeli gateway — Tranzila, Pelecard,
+Hyp) requires as part of merchant account KYC. In practice the owner did
+not have one yet at launch time, so **PayPal (`src/lib/payments/paypal.ts`)
+is the active provider** (`PAYMENT_PROVIDER=paypal`, the default) —
+opening a PayPal Business account does not require that number, so the
+business can start collecting real subscription revenue immediately while
+the עוסק registration is sorted out separately with רשות המסים.
+
+PayPal is implemented against the exact same `PaymentProvider` interface
+as Cardcom, using PayPal's Subscriptions REST API (recurring billing,
+hosted checkout so card data never touches our servers, webhook-driven
+activation — see `src/app/api/webhooks/paypal/route.ts`). Once the
+business has its עוסק number and a Cardcom merchant account, switching
+back is `PAYMENT_PROVIDER=cardcom` plus filling in the `CARDCOM_*` env
+vars — no other code changes.
+
+## Decision: Cardcom (local-optimized option, once עוסק is registered)
 
 Cardcom is used for the MVP because it has the most modern, JSON-first REST
 API of the group, first-class token-based recurring billing (needed for
