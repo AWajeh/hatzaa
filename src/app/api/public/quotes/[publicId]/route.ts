@@ -1,10 +1,14 @@
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { getClientIp } from "@/lib/rate-limit";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
 export async function GET(req: Request, { params }: { params: Promise<{ publicId: string }> }) {
   const { publicId } = await params;
+
+  const ip = getClientIp(req);
+  const { allowed } = rateLimit(`public-quote-view:${ip}`, 60, 60_000);
+  if (!allowed) return NextResponse.json({ error: "RATE_LIMITED" }, { status: 429 });
 
   const quote = await prisma.quote.findUnique({
     where: { publicId },
@@ -24,7 +28,6 @@ export async function GET(req: Request, { params }: { params: Promise<{ publicId
     isExpired && (quote.status === "SENT" || quote.status === "VIEWED") ? "EXPIRED" : quote.status;
 
   const now = new Date();
-  const ip = getClientIp(req);
   const ipHash = crypto.createHash("sha256").update(ip).digest("hex").slice(0, 32);
 
   if (quote.status === "SENT" || quote.status === "VIEWED") {

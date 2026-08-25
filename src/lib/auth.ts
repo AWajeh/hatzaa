@@ -6,6 +6,12 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
 
+if (process.env.NODE_ENV === "production" && !process.env.NEXTAUTH_SECRET) {
+  throw new Error(
+    "NEXTAUTH_SECRET is not set. Generate one with `openssl rand -base64 32` and set it as an environment variable before starting the app."
+  );
+}
+
 declare module "next-auth" {
   interface Session {
     user: {
@@ -71,6 +77,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
 }
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",

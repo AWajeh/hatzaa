@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { renderQuotePdf } from "@/lib/pdf/render-quote-pdf";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
-export async function GET(_req: Request, { params }: { params: Promise<{ publicId: string }> }) {
+export async function GET(req: Request, { params }: { params: Promise<{ publicId: string }> }) {
   const { publicId } = await params;
+
+  const ip = getClientIp(req);
+  const { allowed } = rateLimit(`public-quote-pdf:${ip}`, 20, 60_000);
+  if (!allowed) return NextResponse.json({ error: "RATE_LIMITED" }, { status: 429 });
 
   const quote = await prisma.quote.findUnique({
     where: { publicId },

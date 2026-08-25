@@ -8,6 +8,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { BusinessSettingsForm } from "@/components/settings/business-settings-form";
 import { PreferencesForm } from "@/components/settings/preferences-form";
 import { BillingPanel } from "@/components/settings/billing-panel";
+import { TeamPanel } from "@/components/settings/team-panel";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface SettingsData {
@@ -24,7 +25,8 @@ export default function SettingsPage() {
   const t = useTranslations("settings");
   const tCommon = useTranslations("common");
   const searchParams = useSearchParams();
-  const initialTab = searchParams.get("tab") === "billing" ? "billing" : "business";
+  const tabParam = searchParams.get("tab");
+  const initialTab = ["billing", "team", "preferences"].includes(tabParam ?? "") ? tabParam! : "business";
   const [data, setData] = useState<SettingsData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -60,6 +62,7 @@ export default function SettingsPage() {
             <TabsTrigger value="business">{t("tabs.business")}</TabsTrigger>
             <TabsTrigger value="preferences">{t("tabs.preferences")}</TabsTrigger>
             <TabsTrigger value="billing">{t("tabs.billing")}</TabsTrigger>
+            <TabsTrigger value="team">{t("tabs.team")}</TabsTrigger>
           </TabsList>
           <TabsContent value="business">
             <BusinessSettingsForm business={data.business} onSaved={load} />
@@ -69,6 +72,9 @@ export default function SettingsPage() {
           </TabsContent>
           <TabsContent value="billing">
             <BillingPanel subscription={data.subscription} quotesUsed={data.quotesUsed} />
+          </TabsContent>
+          <TabsContent value="team">
+            <TeamPanel isBusinessPlan={data.subscription?.plan.tier === "BUSINESS"} />
           </TabsContent>
         </Tabs>
       )}

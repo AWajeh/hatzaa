@@ -54,7 +54,7 @@ export function BillingPanel({
       <Card>
         <CardHeader className="flex-row items-center justify-between space-y-0">
           <CardTitle>{t("currentPlan")}</CardTitle>
-          <Badge variant="primary">{plan?.name ?? "Free"}</Badge>
+          <Badge variant="primary">{plan?.name ?? tPricing("plans.free.name")}</Badge>
         </CardHeader>
         <CardContent className="space-y-3">
           <p className="text-sm text-muted-foreground">
@@ -62,7 +62,7 @@ export function BillingPanel({
             {limit == null && ` (${t("unlimited")})`}
           </p>
           {subscription?.cancelAtPeriodEnd && (
-            <p className="text-sm text-warning">Subscription will end at period close.</p>
+            <p className="text-sm text-warning">{t("cancelAtPeriodEnd")}</p>
           )}
         </CardContent>
       </Card>
@@ -76,7 +76,7 @@ export function BillingPanel({
             <button
               onClick={() => setYearly((v) => !v)}
               className="relative h-6 w-11 rounded-full bg-primary/20 transition-colors"
-              aria-label="toggle billing interval"
+              aria-label={tPricing("toggleInterval")}
             >
               <span
                 className={cn(

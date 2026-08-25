@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { requireBusiness, UnauthorizedError } from "@/lib/tenant";
 import { paymentProvider } from "@/lib/payments/provider";
+import { rateLimit } from "@/lib/rate-limit";
 import { PlanTier, BillingInterval } from "@prisma/client";
 
 const schema = z.object({
@@ -13,6 +14,10 @@ const schema = z.object({
 export async function POST(req: Request) {
   try {
     const { businessId, session } = await requireBusiness();
+
+    const { allowed } = rateLimit(`billing-checkout:${businessId}`, 10, 60_000);
+    if (!allowed) return NextResponse.json({ error: "RATE_LIMITED" }, { status: 429 });
+
     const json = await req.json().catch(() => null);
     const parsed = schema.safeParse(json);
     if (!parsed.success) return NextResponse.json({ error: "INVALID" }, { status: 400 });

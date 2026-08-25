@@ -33,7 +33,7 @@ export function Pricing() {
           <button
             onClick={() => setYearly((v) => !v)}
             className="relative h-6 w-11 rounded-full bg-primary/20 transition-colors"
-            aria-label="toggle billing interval"
+            aria-label={t("toggleInterval")}
           >
             <span
               className={cn(

@@ -53,9 +53,9 @@
       "title": "Professional quotes in minutes",
       "subtitle": "The Israeli platform for tradespeople to create, send and track quotes — no Excel, no Word, no mess.",
       "cta": "Create a quote",
-      "secondaryCta": "See an example"
+      "secondaryCta": "See an example",
+      "noCreditCard": "Free to start, no credit card required"
     },
-    "trustedBy": "Thousands of tradespeople already use Hatzaa",
     "howItWorks": {
       "title": "How it works",
       "subtitle": "Three simple steps from your business to your client",
@@ -80,11 +80,12 @@
       "title": "Built for every trade",
       "subtitle": "The system is built to serve every field — not just one"
     },
-    "professionsTitle": "Tradespeople already working with us",
+    "professionsTitle": "Built for every trade — whatever yours is",
     "pricing": {
       "title": "Simple, clear pricing",
       "subtitle": "Start for free, upgrade when you need to",
       "monthly": "Monthly",
+      "toggleInterval": "Toggle billing interval",
       "yearly": "Yearly",
       "yearlyDiscount": "Save 2 months",
       "perMonth": "/ month",
@@ -421,10 +422,55 @@
       "paymentMethod": "Payment method",
       "billingHistory": "Billing history",
       "noPaymentMethod": "No payment method on file",
+      "cancelAtPeriodEnd": "Your subscription will end at the close of the current billing period",
       "subscriptionActivating": "Payment received, activating your subscription…",
       "subscriptionError": "Something went wrong with the payment. Please try again"
     },
     "saved": "Changes saved"
+  },
+  "team": {
+    "upgradeRequired": "Team is available on the Business plan",
+    "upgradeRequiredDescription": "Upgrade to the Business plan to invite team members and manage permissions",
+    "inviteTitle": "Invite a team member",
+    "inviteDescription": "Send an invite link to an email address",
+    "email": "Email",
+    "role": "Role",
+    "sendInvite": "Send invite",
+    "linkCopied": "Link copied",
+    "membersTitle": "Team members",
+    "pending": "Pending",
+    "invited": "Invite sent",
+    "removed": "Removed from team",
+    "roles": {
+      "OWNER": "Owner",
+      "ADMIN": "Admin",
+      "MEMBER": "Member"
+    },
+    "errors": {
+      "alreadyMember": "That user is already on the team",
+      "alreadyInvited": "An invite has already been sent to that address",
+      "userHasBusiness": "That user already has their own business on Hatzaa",
+      "seatLimit": "You've reached your plan's seat limit",
+      "forbidden": "Only the business owner can manage the team",
+      "generic": "Something went wrong. Please try again"
+    },
+    "invite": {
+      "title": "Join {business}",
+      "subtitle": "You've been invited as {role} at {email}",
+      "accept": "Join the team",
+      "email": "Email",
+      "name": "Full name",
+      "password": "Password",
+      "createAndJoin": "Create account and join",
+      "haveAccount": "Already have an account?",
+      "loginInstead": "Log in",
+      "joined": "You've joined the team",
+      "error": "Something went wrong. Please try again",
+      "emailMismatch": "This invite is for a different email address",
+      "emailTaken": "This email is already registered — log in instead",
+      "notFoundTitle": "Invite not found",
+      "notFoundDescription": "This invite doesn't exist, has expired, or was already used"
+    }
   },
   "errors": {
     "404": { "title": "Page not found", "description": "The page you're looking for doesn't exist or was removed" },

@@ -170,19 +170,28 @@ model Business {
   @@map("businesses")
 }
 
+enum MemberStatus {
+  PENDING
+  ACTIVE
+}
+
 model BusinessMember {
-  id         String   @id @default(cuid())
-  businessId String
-  userId     String
-  role       UserRole @default(OWNER)
+  id           String       @id @default(cuid())
+  businessId   String
+  userId       String?
+  role         UserRole     @default(MEMBER)
+  status       MemberStatus @default(ACTIVE)
   invitedEmail String?
-  createdAt  DateTime @default(now())
+  inviteToken  String?      @unique
+  createdAt    DateTime     @default(now())
+  acceptedAt   DateTime?
 
   business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([businessId, userId])
   @@index([userId])
+  @@index([businessId])
   @@map("business_members")
 }
 

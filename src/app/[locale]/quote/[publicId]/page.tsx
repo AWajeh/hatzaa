@@ -70,6 +70,7 @@ export default function PublicQuotePage() {
   const locale = useLocale();
   const t = useTranslations("publicQuote");
   const tCommon = useTranslations("common");
+  const tErrors = useTranslations("errors");
   const [quote, setQuote] = useState<PublicQuote | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -133,8 +134,8 @@ export default function PublicQuotePage() {
   if (notFound || !quote) {
     return (
       <div className="mx-auto flex max-w-md flex-col items-center px-4 py-24 text-center">
-        <h1 className="text-lg font-semibold text-foreground">404</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Not found</p>
+        <h1 className="text-lg font-semibold text-foreground">{tErrors("404.title")}</h1>
+        <p className="mt-2 text-sm text-muted-foreground">{tErrors("404.description")}</p>
       </div>
     );
   }

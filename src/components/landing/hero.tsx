@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   const t = useTranslations("landing.hero");
-  const tCommon = useTranslations("landing");
 
   return (
     <section className="border-b border-border bg-surface">
@@ -30,7 +29,7 @@ export function Hero() {
 
         <p className="mt-6 flex items-center gap-1.5 text-xs text-muted-foreground">
           <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-          {tCommon("trustedBy")}
+          {t("noCreditCard")}
         </p>
       </div>
     </section>

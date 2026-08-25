@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { requireBusiness, UnauthorizedError } from "@/lib/tenant";
+import { rateLimit } from "@/lib/rate-limit";
 
 // MVP logo storage: the browser reads the file as a data URL and we persist
 // it directly on Business.logoUrl. Fine for small PNG/JPG logos; swap for
@@ -14,6 +15,10 @@ const schema = z.object({ dataUrl: z.string().startsWith("data:image/") });
 export async function POST(req: Request) {
   try {
     const { businessId } = await requireBusiness();
+
+    const { allowed } = rateLimit(`logo-upload:${businessId}`, 10, 60_000);
+    if (!allowed) return NextResponse.json({ error: "RATE_LIMITED" }, { status: 429 });
+
     const json = await req.json().catch(() => null);
     const parsed = schema.safeParse(json);
     if (!parsed.success) return NextResponse.json({ error: "INVALID" }, { status: 400 });

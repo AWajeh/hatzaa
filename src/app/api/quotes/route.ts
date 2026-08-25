@@ -4,6 +4,7 @@ import { requireBusiness, UnauthorizedError } from "@/lib/tenant";
 import { quoteSchema } from "@/lib/validations";
 import { calculateQuotePricing } from "@/lib/pricing";
 import { assertWithinQuoteQuota, QuotaExceededError } from "@/lib/subscription";
+import { rateLimit } from "@/lib/rate-limit";
 import type { QuoteStatus } from "@prisma/client";
 
 export async function GET(req: Request) {
@@ -40,6 +41,9 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const { businessId } = await requireBusiness();
+
+    const { allowed } = rateLimit(`quotes-create:${businessId}`, 30, 60_000);
+    if (!allowed) return NextResponse.json({ error: "RATE_LIMITED" }, { status: 429 });
 
     await assertWithinQuoteQuota(businessId);
 
