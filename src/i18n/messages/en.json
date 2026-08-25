@@ -27,7 +27,8 @@
     "deleted": "Deleted successfully",
     "noResults": "No results found",
     "getStarted": "Get started",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "toggleTheme": "Toggle theme"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -164,7 +165,8 @@
       "subtitle": "Start sending quotes in under 2 minutes",
       "submit": "Create account",
       "haveAccount": "Already have an account?",
-      "loginHere": "Log in"
+      "loginHere": "Log in",
+      "agreeToTerms": "By signing up you agree to the <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
     },
     "fields": {
       "name": "Full name",
@@ -470,6 +472,46 @@
       "emailTaken": "This email is already registered — log in instead",
       "notFoundTitle": "Invite not found",
       "notFoundDescription": "This invite doesn't exist, has expired, or was already used"
+    }
+  },
+  "legal": {
+    "backHome": "Back to home",
+    "terms": {
+      "title": "Terms of Service",
+      "updated": "Last updated: August 2026",
+      "intro": "These terms form an agreement between you and Hatzaa (\"the Service\", \"we\") and govern your use of the platform. Browsing or registering for the Service means you agree to these terms. This document is written as an initial baseline for operating the Service; before a full commercial launch, professional legal review tailored to your business is recommended.",
+      "sections": [
+        { "title": "1. Description of the service", "body": "Hatzaa is a platform that lets tradespeople in Israel manage a price list and customers, and issue, send and track quotes. The Service does not provide legal, accounting or professional advice, and is not responsible for the content of the quotes you create." },
+        { "title": "2. Registration and account", "body": "You must provide accurate details when registering and keep your login credentials confidential. You are responsible for all activity that occurs through your account." },
+        { "title": "3. Plans and payment", "body": "The Service is offered on a free plan and paid plans with recurring billing (monthly or yearly) processed via PayPal. You can cancel your subscription at any time from account settings; cancellation takes effect at the end of the current billing period." },
+        { "title": "4. Permitted use", "body": "You may not use the Service for unlawful purposes, to harass third parties, or to attempt to breach the system or access other businesses' data." },
+        { "title": "5. Your data", "body": "The data you enter (business details, customers, price list, quotes) belongs to you. We store it to provide the Service and do not sell it to third parties." },
+        { "title": "6. Public quotes", "body": "Every quote you send gets a unique public link. You are responsible for making sure the content you share via that link is accurate and authorized to be shared." },
+        { "title": "7. Intellectual property", "body": "Hatzaa's design, code, logo and brand belong to us. You may not copy, duplicate, or reverse-engineer the Service." },
+        { "title": "8. Limitation of liability", "body": "The Service is provided \"as is\", with no guarantee of continuous availability or freedom from errors. We are not liable for indirect damages arising from use of the Service, including quote-calculation mistakes not caught by you before sending." },
+        { "title": "9. Termination", "body": "We may suspend or close an account that violates these terms. You may close your account at any time." },
+        { "title": "10. Changes to these terms", "body": "We may update these terms from time to time. Continued use of the Service after an update constitutes acceptance of the updated terms." },
+        { "title": "11. Governing law and jurisdiction", "body": "These terms are governed by Israeli law, with exclusive jurisdiction in the competent courts of Israel." },
+        { "title": "12. Contact", "body": "For questions about these terms, reach us via the contact details in the site footer." }
+      ]
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated: August 2026",
+      "intro": "This policy explains what data Hatzaa collects, how it's stored and used, and your rights over it. This document is written as an initial baseline; before a full commercial launch, professional legal review is recommended.",
+      "sections": [
+        { "title": "1. Information we collect", "body": "Account details (name, email, phone), business details (business name, address, tax ID, logo), the data you enter about your customers and services, and basic usage data (such as quote views)." },
+        { "title": "2. How we use information", "body": "Information is used to run the Service: generating quotes, calculating VAT and discounts, sending links to your customers, managing your subscription, and improving the product." },
+        { "title": "3. Sharing information with third parties", "body": "We share limited information only with necessary infrastructure providers: PayPal for payment processing (we never see or store card details), and Vercel and Neon for hosting and storage. We do not sell information to third parties for advertising." },
+        { "title": "4. Data security", "body": "Passwords are hashed (bcrypt), each business's data is fully isolated from other businesses on the platform, and all communication with the Service is encrypted (HTTPS)." },
+        { "title": "5. Data retention", "body": "We retain data for as long as the account is active. When an account is closed, data deletion can be requested in accordance with the law." },
+        { "title": "6. Cookies and local storage", "body": "We use browser local storage (localStorage) to remember preferences such as language and theme (light/dark), and a session cookie for secure sign-in." },
+        { "title": "7. Your rights", "body": "You may request to access, correct, or delete your personal information at any time via the contact details in the site footer." },
+        { "title": "8. Your customers' data", "body": "When you enter your own customers' details into the system, you act as the controller of that data and are responsible for complying with the law applicable to collecting and using it; Hatzaa acts only as its technical processor." },
+        { "title": "9. Minors", "body": "The Service is not intended for use by anyone under the age of 18." },
+        { "title": "10. Changes to this policy", "body": "We may update this policy from time to time and will post any material change on this page." },
+        { "title": "11. Contact", "body": "For privacy questions, reach us via the contact details in the site footer." }
+      ]
     }
   },
   "errors": {

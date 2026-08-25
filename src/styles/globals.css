@@ -38,6 +38,40 @@
   --destructive-foreground: 0 0% 100%;
 }
 
+.dark {
+  --background: 222 24% 8%;
+  --foreground: 210 20% 92%;
+
+  --surface: 222 22% 11%;
+  --surface-foreground: 210 20% 92%;
+
+  --muted: 222 18% 16%;
+  --muted-foreground: 217 12% 62%;
+
+  --border: 222 16% 20%;
+  --input: 222 16% 20%;
+  --ring: 221 83% 65%;
+
+  --primary: 221 83% 65%;
+  --primary-hover: 221 83% 70%;
+  --primary-foreground: 222 24% 8%;
+
+  --secondary: 222 18% 16%;
+  --secondary-foreground: 210 20% 92%;
+
+  --accent: 222 18% 16%;
+  --accent-foreground: 210 20% 92%;
+
+  --success: 152 55% 45%;
+  --success-foreground: 222 24% 8%;
+
+  --warning: 38 92% 58%;
+  --warning-foreground: 26 40% 12%;
+
+  --destructive: 0 72% 62%;
+  --destructive-foreground: 222 24% 8%;
+}
+
 * {
   border-color: hsl(var(--border));
 }

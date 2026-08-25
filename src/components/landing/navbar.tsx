@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/nav/language-switcher";
+import { ThemeToggle } from "@/components/nav/theme-toggle";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -35,6 +36,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle />
           <LanguageSwitcher />
           <Link href="/login" className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}>
             {t("login")}
@@ -59,6 +61,7 @@ export function Navbar() {
             ))}
           </nav>
           <div className="mt-4 flex items-center gap-2">
+            <ThemeToggle />
             <LanguageSwitcher />
           </div>
           <div className="mt-3 flex flex-col gap-2">

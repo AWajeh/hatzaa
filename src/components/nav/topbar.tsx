@@ -5,6 +5,7 @@ import { signOut } from "next-auth/react";
 import { LogOut, User as UserIcon, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/nav/language-switcher";
+import { ThemeToggle } from "@/components/nav/theme-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -41,6 +42,7 @@ export function Topbar({ userName, userEmail, planTier }: TopbarProps) {
             {t("upgrade")}
           </Link>
         )}
+        <ThemeToggle />
         <LanguageSwitcher />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

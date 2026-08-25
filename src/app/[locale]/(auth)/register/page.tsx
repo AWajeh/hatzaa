@@ -94,6 +94,21 @@ export default function RegisterPage() {
           </Button>
         </form>
 
+        <p className="mt-4 text-center text-xs text-muted-foreground">
+          {t.rich("register.agreeToTerms", {
+            terms: (chunks) => (
+              <Link href="/terms" className="underline hover:text-foreground">
+                {chunks}
+              </Link>
+            ),
+            privacy: (chunks) => (
+              <Link href="/privacy" className="underline hover:text-foreground">
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
+
         <p className="mt-6 text-center text-sm text-muted-foreground">
           {t("register.haveAccount")}{" "}
           <Link href="/login" className="font-medium text-primary hover:underline">
