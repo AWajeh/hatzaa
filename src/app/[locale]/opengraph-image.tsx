@@ -9,7 +9,13 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 function loadFont(locale: string) {
-  const file = locale === "ar" ? "NotoSansArabic-Variable.ttf" : "NotoSansHebrew-Variable.ttf";
+  // Satori (next/og's renderer) can't handle variable fonts, and Noto Sans
+  // Arabic's GSUB table uses a contextual-substitution format satori
+  // doesn't support at all ("lookupType: 5 - substFormat: 3") — Tajawal
+  // (a static, simpler-shaped Arabic font) renders correctly instead. See
+  // assets/fonts/README.md.
+  const file =
+    locale === "ar" ? "Tajawal-Bold.ttf" : locale === "en" ? "Inter-Bold-Static.ttf" : "NotoSansHebrew-Bold-Static.ttf";
   return fs.readFileSync(path.join(process.cwd(), "assets", "fonts", file));
 }
 
