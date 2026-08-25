@@ -8,13 +8,11 @@ export async function GET() {
 
   const user = await prisma.user.findUniqueOrThrow({
     where: { id: session.user.id },
-    select: { email: true, phone: true, emailVerifiedAt: true, phoneVerifiedAt: true },
+    select: { phone: true, phoneVerifiedAt: true },
   });
 
   return NextResponse.json({
-    email: user.email,
     phone: user.phone,
-    emailVerified: Boolean(user.emailVerifiedAt),
     phoneVerified: Boolean(user.phoneVerifiedAt),
   });
 }

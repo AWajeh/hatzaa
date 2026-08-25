@@ -6,9 +6,6 @@ import { registerSchema } from "@/lib/validations";
 import { PlanTier, UserRole } from "@prisma/client";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { smsProvider, toE164Israel } from "@/lib/sms/provider";
-import { emailProvider } from "@/lib/email/provider";
-import { issueOtpCode } from "@/lib/otp";
-import { verificationEmailHtml } from "@/lib/email/templates";
 
 export async function POST(req: Request) {
   const ip = getClientIp(req);
@@ -85,18 +82,9 @@ export async function POST(req: Request) {
     return { user, business };
   });
 
-  // Kick off both verification channels. Failures here shouldn't block
-  // registration — the user can resend from the /verify page.
-  await Promise.allSettled([
-    smsProvider.sendCode(e164Phone),
-    issueOtpCode(result.user.id, "EMAIL_VERIFY").then((code) =>
-      emailProvider.send({
-        to: normalizedEmail,
-        subject: locale === "en" ? "Verify your email — Hatzaa" : locale === "ar" ? "تأكيد بريدك الإلكتروني — הצעה" : "אימות כתובת האימייל — הצעה",
-        html: verificationEmailHtml(code, locale),
-      })
-    ),
-  ]);
+  // Failure here shouldn't block registration — the user can resend from
+  // the /verify page.
+  await smsProvider.sendCode(e164Phone).catch(() => {});
 
   return NextResponse.json({ id: result.user.id, businessSlug: result.business.slug }, { status: 201 });
 }

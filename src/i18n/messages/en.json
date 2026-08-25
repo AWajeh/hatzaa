@@ -210,13 +210,11 @@
   },
   "verify": {
     "title": "Verify your account",
-    "subtitle": "To finish signing up, verify your email and phone number",
-    "emailLabel": "Code sent to {email}",
+    "subtitlePhoneOnly": "To finish signing up, verify your phone number",
     "phoneLabel": "Code sent to {phone}",
     "confirm": "Confirm",
     "resend": "Resend code",
     "invalidCode": "Invalid code, try again",
-    "emailVerified": "Email verified",
     "phoneVerified": "Phone verified",
     "codeSent": "A new code was sent",
     "logout": "Log out"

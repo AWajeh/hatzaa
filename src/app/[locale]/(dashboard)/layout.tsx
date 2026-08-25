@@ -18,9 +18,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { emailVerifiedAt: true, phoneVerifiedAt: true },
+    select: { phoneVerifiedAt: true },
   });
-  if (!user?.emailVerifiedAt || !user?.phoneVerifiedAt) redirect("/verify");
+  if (!user?.phoneVerifiedAt) redirect("/verify");
 
   const business = await prisma.business.findUnique({
     where: { id: session.user.businessId },
