@@ -1,0 +1,62 @@
+import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
+import { isAppLocale, localeDirections, defaultLocale } from "@/i18n/config";
+
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
+
+export default async function OpengraphImage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const safeLocale = isAppLocale(locale) ? locale : defaultLocale;
+  const t = await getTranslations({ locale: safeLocale, namespace: "meta" });
+  const dir = localeDirections[safeLocale];
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: dir === "rtl" ? "flex-end" : "flex-start",
+          justifyContent: "center",
+          padding: "80px",
+          background: "linear-gradient(135deg, #0f1420 0%, #16213a 100%)",
+          direction: dir,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            marginBottom: 40,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              width: 56,
+              height: 56,
+              borderRadius: 14,
+              background: "#4c7cf0",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 28,
+              fontWeight: 700,
+              color: "white",
+            }}
+          >
+            {t("appName").charAt(0)}
+          </div>
+          <div style={{ fontSize: 36, fontWeight: 700, color: "white" }}>{t("appName")}</div>
+        </div>
+        <div style={{ fontSize: 56, fontWeight: 700, color: "white", maxWidth: 900, lineHeight: 1.2 }}>
+          {t("tagline")}
+        </div>
+      </div>
+    ),
+    { ...size }
+  );
+}

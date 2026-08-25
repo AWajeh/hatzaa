@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { localeDirections, isAppLocale, type AppLocale } from "@/i18n/config";
+import { localeDirections, isAppLocale, locales, type AppLocale } from "@/i18n/config";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://hatzaa.online";
 
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
@@ -25,10 +27,45 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: "הצעה — הצעות מחיר מקצועיות לבעלי מקצוע",
-  description: "המערכת הישראלית ליצירה, שליחה ומעקב אחרי הצעות מחיר",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isAppLocale(locale) ? locale : routing.defaultLocale;
+  const t = await getTranslations({ locale: safeLocale, namespace: "meta" });
+
+  const languages: Record<string, string> = {};
+  for (const l of locales) languages[l] = `${APP_URL}/${l}`;
+  languages["x-default"] = `${APP_URL}/${routing.defaultLocale}`;
+
+  return {
+    metadataBase: new URL(APP_URL),
+    title: { default: `${t("appName")} — ${t("tagline")}`, template: `%s — ${t("appName")}` },
+    description: t("tagline"),
+    alternates: {
+      canonical: `${APP_URL}/${safeLocale}`,
+      languages,
+    },
+    openGraph: {
+      title: `${t("appName")} — ${t("tagline")}`,
+      description: t("tagline"),
+      url: `${APP_URL}/${safeLocale}`,
+      siteName: t("appName"),
+      locale: safeLocale === "he" ? "he_IL" : safeLocale === "ar" ? "ar_IL" : "en_IL",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("appName")} — ${t("tagline")}`,
+      description: t("tagline"),
+    },
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
