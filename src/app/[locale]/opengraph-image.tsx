@@ -1,9 +1,17 @@
+import fs from "fs";
+import path from "path";
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
 import { isAppLocale, localeDirections, defaultLocale } from "@/i18n/config";
 
+export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+function loadFont(locale: string) {
+  const file = locale === "ar" ? "NotoSansArabic-Variable.ttf" : "NotoSansHebrew-Variable.ttf";
+  return fs.readFileSync(path.join(process.cwd(), "assets", "fonts", file));
+}
 
 export default async function OpengraphImage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -24,6 +32,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
           padding: "80px",
           background: "linear-gradient(135deg, #0f1420 0%, #16213a 100%)",
           direction: dir,
+          fontFamily: "Noto",
         }}
       >
         <div
@@ -57,6 +66,15 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        {
+          name: "Noto",
+          data: loadFont(safeLocale),
+          style: "normal",
+        },
+      ],
+    }
   );
 }
