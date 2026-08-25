@@ -97,7 +97,7 @@
         "free": {
           "name": "Free",
           "description": "To get started and try the system",
-          "features": ["Up to 5 quotes per month", "Personal price list", "Basic PDF", "Public quote link"]
+          "features": ["2 free quotes, one time", "Personal price list", "Basic PDF", "Public quote link"]
         },
         "pro": {
           "name": "Pro",
@@ -417,6 +417,7 @@
     "billing": {
       "currentPlan": "Current plan",
       "usage": "Usage this month",
+      "usageLifetime": "Free plan usage",
       "quotesUsed": "{used} of {limit} quotes",
       "unlimited": "Unlimited",
       "changePlan": "Change plan",

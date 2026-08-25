@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireBusiness, UnauthorizedError } from "@/lib/tenant";
-import { getMonthlyQuoteUsage } from "@/lib/subscription";
+import { getMonthlyQuoteUsage, getLifetimeQuoteUsage } from "@/lib/subscription";
 
 export async function GET() {
   try {
@@ -12,7 +12,10 @@ export async function GET() {
       where: { businessId },
       include: { plan: true },
     });
-    const quotesUsed = await getMonthlyQuoteUsage(businessId);
+    const quotesUsed =
+      subscription?.plan.tier === "FREE"
+        ? await getLifetimeQuoteUsage(businessId)
+        : await getMonthlyQuoteUsage(businessId);
 
     return NextResponse.json({
       business: {

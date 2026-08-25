@@ -13,7 +13,7 @@ async function main() {
       name: "Free",
       monthlyPriceIls: 0,
       yearlyPriceIls: 0,
-      quoteMonthlyLimit: 5,
+      quoteMonthlyLimit: 2, // lifetime, one-time — see assertWithinQuoteQuota
       features: {
         pdf: true,
         logo: false,

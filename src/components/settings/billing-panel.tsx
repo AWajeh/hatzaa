@@ -58,7 +58,7 @@ export function BillingPanel({
         </CardHeader>
         <CardContent className="space-y-3">
           <p className="text-sm text-muted-foreground">
-            {t("usage")}: {t("quotesUsed", { used: quotesUsed, limit: limit ?? "" })}
+            {t(plan?.tier === "FREE" ? "usageLifetime" : "usage")}: {t("quotesUsed", { used: quotesUsed, limit: limit ?? "" })}
             {limit == null && ` (${t("unlimited")})`}
           </p>
           {subscription?.cancelAtPeriodEnd && (

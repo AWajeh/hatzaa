@@ -27,11 +27,19 @@ export async function getMonthlyQuoteUsage(businessId: string) {
   });
 }
 
+// The Free plan's limit is a one-time lifetime allowance, not a monthly
+// one — it never resets. Paid plans are unlimited (quoteMonthlyLimit is
+// null for them), so this only ever matters for FREE.
+export async function getLifetimeQuoteUsage(businessId: string) {
+  return prisma.quote.count({ where: { businessId } });
+}
+
 export async function assertWithinQuoteQuota(businessId: string) {
   const { plan } = await getBusinessPlan(businessId);
   if (!plan || plan.quoteMonthlyLimit == null) return; // unlimited
 
-  const used = await getMonthlyQuoteUsage(businessId);
+  const used =
+    plan.tier === "FREE" ? await getLifetimeQuoteUsage(businessId) : await getMonthlyQuoteUsage(businessId);
   if (used >= plan.quoteMonthlyLimit) {
     throw new QuotaExceededError(plan.quoteMonthlyLimit);
   }
