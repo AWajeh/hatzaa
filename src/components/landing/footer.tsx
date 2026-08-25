@@ -1,0 +1,23 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
+export function Footer() {
+  const t = useTranslations("landing.footer");
+
+  return (
+    <footer className="border-t border-border bg-surface py-10">
+      <div className="container flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <span className="text-sm font-semibold text-foreground">הצעה</span>
+        <nav className="flex flex-wrap items-center justify-center gap-5 text-sm text-muted-foreground">
+          <span>{t("terms")}</span>
+          <span>{t("privacy")}</span>
+          <span>{t("contact")}</span>
+        </nav>
+        <span className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Hatzaa. {t("rights")}
+        </span>
+      </div>
+    </footer>
+  );
+}

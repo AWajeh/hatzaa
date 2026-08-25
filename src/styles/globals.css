@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", "Noto Sans Hebrew", "Noto Sans Arabic", system-ui, sans-serif;
+
+  --background: 0 0% 100%;
+  --foreground: 222 20% 12%;
+
+  --surface: 0 0% 100%;
+  --surface-foreground: 222 20% 12%;
+
+  --muted: 220 16% 96%;
+  --muted-foreground: 220 9% 46%;
+
+  --border: 220 14% 90%;
+  --input: 220 14% 90%;
+  --ring: 221 70% 52%;
+
+  --primary: 221 70% 52%;
+  --primary-hover: 221 70% 46%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 220 16% 96%;
+  --secondary-foreground: 222 20% 16%;
+
+  --accent: 220 16% 96%;
+  --accent-foreground: 222 20% 16%;
+
+  --success: 152 60% 36%;
+  --success-foreground: 0 0% 100%;
+
+  --warning: 38 92% 50%;
+  --warning-foreground: 26 40% 15%;
+
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir="rtl"] body {
+  letter-spacing: 0;
+}
+
+::selection {
+  background-color: hsl(var(--primary) / 0.18);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

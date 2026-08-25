@@ -1,0 +1,429 @@
+{
+  "meta": {
+    "appName": "Hatzaa",
+    "tagline": "Professional quotes in minutes"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "loading": "Loading…",
+    "back": "Back",
+    "next": "Next",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "actions": "Actions",
+    "close": "Close",
+    "optional": "Optional",
+    "required": "Required",
+    "currency": "₪",
+    "somethingWentWrong": "Something went wrong. Please try again.",
+    "tryAgain": "Try again",
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "noResults": "No results found",
+    "getStarted": "Get started",
+    "learnMore": "Learn more"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "customers": "Customers",
+    "services": "Price List",
+    "quotes": "Quotes",
+    "settings": "Settings",
+    "logout": "Log out",
+    "myAccount": "My account",
+    "newQuote": "New quote"
+  },
+  "landing": {
+    "nav": {
+      "howItWorks": "How it works",
+      "features": "Features",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "login": "Log in",
+      "signup": "Start free"
+    },
+    "hero": {
+      "title": "Professional quotes in minutes",
+      "subtitle": "The Israeli platform for tradespeople to create, send and track quotes — no Excel, no Word, no mess.",
+      "cta": "Create a quote",
+      "secondaryCta": "See an example"
+    },
+    "trustedBy": "Thousands of tradespeople already use Hatzaa",
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Three simple steps from your business to your client",
+      "steps": [
+        { "title": "Set up your business and price list", "description": "Add your business details, logo, and the services you offer with your prices." },
+        { "title": "Build a quote", "description": "Pick a customer, add services from your price list, and the system calculates everything automatically, including VAT." },
+        { "title": "Send and track", "description": "Send a link or PDF over WhatsApp and track when the customer viewed, accepted or rejected the quote." }
+      ]
+    },
+    "features": {
+      "title": "Everything you need to close deals faster",
+      "items": [
+        { "title": "Fast to build", "description": "A ready quote in under 3 minutes from your personal price list." },
+        { "title": "Mobile ready", "description": "Build and send quotes right from your phone, on the job site." },
+        { "title": "Professional PDF", "description": "Every quote gets a PDF with your logo and branding, ready to print." },
+        { "title": "Real-time tracking", "description": "Know exactly when the customer opened the quote and what its status is." },
+        { "title": "Send on WhatsApp", "description": "Send the quote to your customer in one click with a ready-made message." },
+        { "title": "Automatic VAT", "description": "Accurate, automatic calculation of VAT, discounts and totals." }
+      ]
+    },
+    "examples": {
+      "title": "Built for every trade",
+      "subtitle": "The system is built to serve every field — not just one"
+    },
+    "professionsTitle": "Tradespeople already working with us",
+    "pricing": {
+      "title": "Simple, clear pricing",
+      "subtitle": "Start for free, upgrade when you need to",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "yearlyDiscount": "Save 2 months",
+      "perMonth": "/ month",
+      "mostPopular": "Most popular",
+      "currentPlan": "Your plan",
+      "choosePlan": "Choose plan",
+      "plans": {
+        "free": {
+          "name": "Free",
+          "description": "To get started and try the system",
+          "features": ["Up to 5 quotes per month", "Personal price list", "Basic PDF", "Public quote link"]
+        },
+        "pro": {
+          "name": "Pro",
+          "description": "For the serious independent tradesperson",
+          "features": ["Unlimited quotes", "Logo and personal branding", "Several design templates", "Advanced analytics and tracking", "Send on WhatsApp"]
+        },
+        "business": {
+          "name": "Business",
+          "description": "For teams and companies with multiple staff",
+          "features": ["Everything in Pro", "Up to 5 team members", "Permission management", "Advanced branding", "Priority support"]
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        { "question": "Is this suitable for my trade?", "answer": "Yes. The system is built to fit any tradesperson who issues quotes — renovation contractors, electricians, plumbers, painters, carpenters and more." },
+        { "question": "Can I try it for free?", "answer": "Yes, you can start on the free plan with no credit card and create up to 5 quotes per month." },
+        { "question": "How does the customer receive the quote?", "answer": "You send a unique link via WhatsApp, email, or any other channel. The customer opens the quote in their browser, can download a PDF, and accept or reject it." },
+        { "question": "Can I change the VAT rate?", "answer": "Yes, the VAT rate can be updated in Settings at any time, so quotes always stay accurate." },
+        { "question": "Is my data secure?", "answer": "Yes. Your data is encrypted and fully isolated from other businesses on the platform. We never store credit card details." }
+      ]
+    },
+    "finalCta": {
+      "title": "Ready to start sending professional quotes?",
+      "subtitle": "Join today, for free, no credit card required",
+      "cta": "Get started now"
+    },
+    "footer": {
+      "product": "Product",
+      "company": "Company",
+      "legal": "Legal",
+      "about": "About",
+      "contact": "Contact",
+      "terms": "Terms of service",
+      "privacy": "Privacy",
+      "rights": "All rights reserved"
+    }
+  },
+  "professions": {
+    "RENOVATION_CONTRACTOR": "Renovation contractor",
+    "ELECTRICIAN": "Electrician",
+    "PLUMBER": "Plumber",
+    "AC_TECHNICIAN": "AC technician",
+    "PAINTER": "Painter",
+    "FLOORING": "Flooring installer",
+    "CARPENTER": "Carpenter",
+    "ALUMINUM": "Aluminum work",
+    "BUILDING_CONTRACTOR": "Building contractor",
+    "EXCAVATION": "Excavation work",
+    "INSTALLER": "Installer",
+    "TECHNICIAN": "Technician",
+    "OTHER": "Other trade"
+  },
+  "auth": {
+    "login": {
+      "title": "Log in to your account",
+      "subtitle": "Welcome back",
+      "submit": "Log in",
+      "noAccount": "Don't have an account yet?",
+      "createOne": "Create a new account"
+    },
+    "register": {
+      "title": "Create a new account",
+      "subtitle": "Start sending quotes in under 2 minutes",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "loginHere": "Log in"
+    },
+    "fields": {
+      "name": "Full name",
+      "businessName": "Business name",
+      "email": "Email",
+      "phone": "Phone",
+      "password": "Password"
+    },
+    "google": "Continue with Google",
+    "orContinueWith": "or continue with email",
+    "errors": {
+      "invalidCredentials": "Invalid email or password",
+      "emailTaken": "This email is already registered",
+      "weakPassword": "Password must be at least 8 characters"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Hi {name}, here's what's happening this month",
+    "stats": {
+      "quotesThisMonth": "Quotes this month",
+      "sent": "Sent",
+      "viewed": "Viewed",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "totalValue": "Total value",
+      "acceptanceRate": "Acceptance rate"
+    },
+    "recentQuotes": "Recent quotes",
+    "viewAll": "View all",
+    "chart": {
+      "title": "Quotes over time",
+      "revenue": "Value of accepted quotes"
+    },
+    "emptyState": {
+      "title": "No quotes yet",
+      "description": "Create your first quote in under 3 minutes",
+      "cta": "Create a quote"
+    }
+  },
+  "customers": {
+    "title": "Customers",
+    "subtitle": "All your customers in one place",
+    "add": "New customer",
+    "edit": "Edit customer",
+    "fields": {
+      "name": "Customer name",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "notes": "Notes",
+      "status": "Status"
+    },
+    "status": {
+      "LEAD": "Lead",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    },
+    "table": {
+      "name": "Name",
+      "contact": "Contact",
+      "quotesCount": "# Quotes",
+      "lastQuote": "Last quote",
+      "totalValue": "Total value",
+      "status": "Status"
+    },
+    "empty": {
+      "title": "No customers yet",
+      "description": "Add your first customer to start creating quotes",
+      "cta": "Add customer"
+    },
+    "deleteConfirm": "Delete this customer? This can't be undone.",
+    "history": "Quote history"
+  },
+  "services": {
+    "title": "Price list",
+    "subtitle": "Your services and prices",
+    "add": "New service",
+    "edit": "Edit service",
+    "fields": {
+      "name": "Service name",
+      "description": "Description",
+      "unit": "Unit",
+      "price": "Price",
+      "category": "Category",
+      "notes": "Notes"
+    },
+    "units": {
+      "sqm": "sq. m",
+      "meter": "meter",
+      "hour": "hour",
+      "unit": "unit",
+      "day": "day",
+      "job": "job"
+    },
+    "empty": {
+      "title": "Your price list is empty",
+      "description": "Add services to speed up building quotes",
+      "cta": "Add service"
+    },
+    "deleteConfirm": "Delete this service?",
+    "search": "Search services…",
+    "allCategories": "All categories",
+    "noCategory": "No category",
+    "newCategory": "New category",
+    "created": "Service added",
+    "updated": "Service updated",
+    "deleted": "Service deleted",
+    "categoryCreated": "Category added"
+  },
+  "quotes": {
+    "title": "Quotes",
+    "subtitle": "All the quotes you've created",
+    "new": "New quote",
+    "search": "Search by customer or number…",
+    "status": {
+      "ALL": "All statuses",
+      "DRAFT": "Draft",
+      "SENT": "Sent",
+      "VIEWED": "Viewed",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected",
+      "EXPIRED": "Expired"
+    },
+    "quotaExceeded": "You've reached your plan's limit of {limit} quotes this month. Upgrade to create more.",
+    "table": {
+      "number": "Number",
+      "customer": "Customer",
+      "amount": "Amount",
+      "status": "Status",
+      "date": "Date",
+      "lastActivity": "Last activity"
+    },
+    "empty": {
+      "title": "You haven't created any quotes yet",
+      "description": "Your first quote is only a few clicks away",
+      "cta": "Create a quote"
+    },
+    "builder": {
+      "title": "New quote",
+      "selectCustomer": "Select customer",
+      "chooseCustomer": "Choose an existing customer or add a new one",
+      "newCustomer": "New customer",
+      "items": "Items",
+      "addItem": "Add item",
+      "addFromPriceList": "Add from price list",
+      "customItem": "Custom item",
+      "item": "Item",
+      "quantity": "Qty",
+      "unitPrice": "Unit price",
+      "lineTotal": "Total",
+      "removeItem": "Remove",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "discountAmount": "Amount",
+      "discountPercent": "Percent",
+      "vat": "VAT",
+      "total": "Total due",
+      "details": "Additional details",
+      "validUntil": "Valid until",
+      "terms": "Payment terms",
+      "notes": "Notes on the quote",
+      "saveDraft": "Save as draft",
+      "createAndSend": "Create and send",
+      "preview": "Preview",
+      "noItemsYet": "No items added yet",
+      "searchCustomer": "Search customers…",
+      "searchServices": "Search the price list…",
+      "customerRequired": "Please select a customer",
+      "itemsRequired": "Add at least one item"
+    },
+    "detail": {
+      "sendWhatsapp": "Send on WhatsApp",
+      "downloadPdf": "Download PDF",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied",
+      "viewedAt": "Last viewed",
+      "notViewedYet": "Not viewed yet",
+      "sentAt": "Sent on",
+      "activity": "Activity",
+      "respondedAt": "Responded",
+      "clientNote": "Client note",
+      "viewCount": "Viewed {count} times",
+      "draftNotice": "This quote is still a draft. Finish editing it before sending.",
+      "editDraft": "Edit draft"
+    }
+  },
+  "publicQuote": {
+    "preparedFor": "Prepared for",
+    "quoteNumber": "Quote #",
+    "issueDate": "Issue date",
+    "validUntil": "Valid until",
+    "service": "Service",
+    "quantity": "Qty",
+    "unitPrice": "Unit price",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "vat": "VAT",
+    "grandTotal": "Total due",
+    "terms": "Payment terms",
+    "notes": "Notes",
+    "accept": "Accept quote",
+    "reject": "Reject quote",
+    "leaveNote": "Add a note (optional)",
+    "downloadPdf": "Download PDF",
+    "accepted": "The quote has been accepted. We'll be in touch shortly.",
+    "rejected": "The quote has been rejected. Thanks for letting us know.",
+    "alreadyResponded": "You've already responded to this quote",
+    "expired": "This quote has expired",
+    "contactUs": "Contact us",
+    "poweredBy": "This quote was generated with"
+  },
+  "whatsapp": {
+    "send": "Send on WhatsApp",
+    "message": "Hi {customerName},\nYour quote from {businessName} is ready.\nView it here: {link}"
+  },
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "business": "Business details",
+      "billing": "Subscription & billing",
+      "team": "Team",
+      "preferences": "Preferences"
+    },
+    "business": {
+      "logo": "Logo",
+      "uploadLogo": "Upload logo",
+      "name": "Business name",
+      "ownerName": "Owner name",
+      "profession": "Trade",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "taxId": "Tax ID (עוסק מורשה / ח.פ)",
+      "save": "Save details"
+    },
+    "preferences": {
+      "language": "System language",
+      "vatRate": "VAT rate",
+      "vatRateHelp": "The VAT rate is used to automatically calculate every new quote",
+      "quotePrefix": "Quote number prefix",
+      "defaultValidityDays": "Default validity (days)",
+      "defaultTerms": "Default payment terms"
+    },
+    "billing": {
+      "currentPlan": "Current plan",
+      "usage": "Usage this month",
+      "quotesUsed": "{used} of {limit} quotes",
+      "unlimited": "Unlimited",
+      "changePlan": "Change plan",
+      "cancelSubscription": "Cancel subscription",
+      "paymentMethod": "Payment method",
+      "billingHistory": "Billing history",
+      "noPaymentMethod": "No payment method on file"
+    },
+    "saved": "Changes saved"
+  },
+  "errors": {
+    "404": { "title": "Page not found", "description": "The page you're looking for doesn't exist or was removed" },
+    "generic": "An error occurred. Please try again later"
+  }
+}

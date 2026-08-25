@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hatzaa
+      POSTGRES_PASSWORD: hatzaa
+      POSTGRES_DB: hatzaa
+    ports:
+      - "5432:5432"
+    volumes:
+      - hatzaa_pgdata:/var/lib/postgresql/data
+
+volumes:
+  hatzaa_pgdata:
